@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eruliaf - Bethany Hamilton Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    body { margin: 0; padding: 20px; font-family: sans-serif; }
+    .profile-wrapper { width: 100%; max-width: 1100px; margin: 0 auto; }
+    .header-card.form-container, .tabs-card.form-container, .nav.form-container {
+        width: 100% !important; max-width: 1100px !important; box-sizing: border-box !important; margin-left: auto !important; margin-right: auto !important;
+    }
+    .header-card { display: flex; gap: 30px; padding: 25px; border-radius: 10px; margin-bottom: 20px; align-items: flex-start; }
+    .header-img-box {
+        width: 320px; height: 240px; min-width: 320px; min-height: 240px; border-radius: 16px !important; overflow: hidden !important; flex-shrink: 0; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center;
+    }
+    .header-img-box img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; border-radius: 16px; }
+    .header-info { flex: 1; display: flex; flex-direction: column; gap: 10px; color: #333; }
+    .header-info h1 { margin: 0; font-size: 32px; }
+    .header-info p { margin: 0; font-size: 16px; color: #444; }
+    .tabs-card { border-radius: 10px; overflow: hidden; background-color: #ffffff; }
+    .tab-buttons { display: flex; border-bottom: 1px solid #ccc; background-color: #f1f3f5; }
+    .tab-btn { flex: 1; padding: 16px; background: none; border: none; font-size: 18px; font-weight: 600; color: #555; cursor: pointer; transition: all 0.2s ease; }
+    .tab-btn.active { background-color: #ffffff; color: #000; border-bottom: 3px solid #4a4a4a; }
+    .tab-content { display: block !important; visibility: visible !important; opacity: 1 !important; padding: 30px; line-height: 1.8; color: #111111 !important; font-size: 16px; min-height: 160px; background-color: #ffffff; }
+    
+    @keyframes quotePulse {
+        0% { border-left-color: #4a4a4a; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); }
+        50% { border-left-color: #007bff; box-shadow: -4px 0 15px rgba(0, 123, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.08); }
+        100% { border-left-color: #4a4a4a; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); }
+    }
+    .pulsing-quote {
+        margin: 20px 0 0 0; padding: 25px 30px; background-color: #f8f9fa; border-left: 6px solid #4a4a4a; border-radius: 0 10px 10px 0; font-size: 18px; line-height: 1.6; color: #333; font-style: italic; animation: quotePulse 3s infinite ease-in-out; transition: transform 0.3s ease;
+    }
+    .pulsing-quote:hover { transform: translateY(-2px); }
+
+    .panel { display: none; position: fixed; right: 0; top: 0; width: 240px; height: 100%; padding: 25px; box-shadow: -4px 0 15px rgba(0,0,0,0.15); z-index: 100; background: white; }
+    .panel.show { display: block; }
+    .nav-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: 1px solid #ccc; background-color: #e9ecef; color: #333; font-weight: 600; cursor: pointer; text-decoration: none; font-size: 18px; transition: all 0.2s ease; }
+    .nav-link.active { background-color: #4a4a4a; color: #ffffff; border-color: #4a4a4a; }
+    </style>
+</head>
+<body>
+    <div class="nav form-container" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; box-sizing: border-box;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="Eruliaf logo.png" alt="Eruliaf Logo" style="height: 55px; width: auto; object-fit: contain;">
+            <a href="dashboard.html" class="nav-link" id="nav-home">Home</a>
+            <a href="browse.html" class="nav-link" id="nav-browse">Browse</a>
+            <a href="starred.html" class="nav-link" id="nav-starred">Starred</a>
+        </div>
+        <div style="display:flex; gap: 10px; align-items:center;">
+            <input type="text" class="input-field" placeholder="Search..." style="padding: 8px 12px; width: 150px;">
+            <button class="form-btn" onclick="toggleSettings()" style="padding: 8px 12px; cursor:pointer; display: flex; align-items: center; justify-content: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="profile-wrapper">
+        <div class="header-card form-container">
+            <div class="header-img-box form-blob">
+                <img id="profile-img" src="hamilton.jpeg" alt="Bethany Hamilton">
+            </div>
+            <div class="header-info">
+                <h1>Bethany Hamilton</h1>
+                <p><strong>Sport:</strong> Professional Surfing</p>
+                <p><strong>Country:</strong> United States</p>
+                <p><strong>Key Trait:</strong> Unstoppable resilience, courage, and faith-driven determination</p>
+                <p style="margin-top: 8px; line-height: 1.6;"><strong>Description:</strong> Professional American surfer who survived a 2003 shark attack and returned to world-class competitive surfing.</p>
+            </div>
+        </div>
+
+        <div class="tabs-card form-container">
+            <div class="tab-buttons">
+                <button type="button" class="tab-btn active" onclick="switchTab('journey', this)">Journey</button>
+                <button type="button" class="tab-btn" onclick="switchTab('habits', this)">Habits</button>
+                <button type="button" class="tab-btn" onclick="switchTab('achievements', this)">Key Achievements</button>
+            </div>
+            <div class="tab-content" id="tab-content-area">
+                <p>Bethany Hamilton was born in Lihue, Hawaii, in 1990. Learning to surf at a very young age, she was already a promising competitive surfer by age thirteen when she survived a 14-foot tiger shark attack in 2003, losing her left arm. Refusing to give up her passion for the ocean, Hamilton returned to her surfboard just 26 days after the incident. Adapting her paddling technique and board designs, she climbed back into elite professional competition, winning major international events and inspiring people across the globe.</p>
+            </div>
+        </div>
+
+        <blockquote class="pulsing-quote">
+            "I don't need easy, I just need possible."
+            <footer style="margin-top: 10px; font-style: normal; font-weight: 700; color: #111; font-size: 15px;">— Bethany Hamilton</footer>
+        </blockquote>
+    </div>
+
+   <div id="settings" class="panel form-container">
+    <h3 style="margin-top:0;">Settings</h3>
+    <hr style="margin-bottom: 20px; opacity: 0.3;">
+    <label style="display:block; margin-bottom: 15px; cursor: pointer;">
+        <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode(this.checked)"> Dark Mode
+    </label>
+    
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 30px;">
+        <button class="form-btn form-btn--submit" onclick="toggleSettings()" style="width:100%; padding:8px; border-radius:5px; cursor:pointer;">Close</button>
+        <a href="index.html" style="text-decoration: none;"><button class="form-btn" style="width:100%; background-color: #dc3545; color: white; padding: 8px; border:none; border-radius:5px; cursor:pointer; font-weight:600;">Logout</button></a>
+    </div>
+</div>
+
+    <script>
+        function toggleSettings() { document.getElementById('settings').classList.toggle('show'); }
+        const tabData = {
+            journey: "<p>Bethany Hamilton was born in Lihue, Hawaii, in 1990. Learning to surf at a very young age, she was already a promising competitive surfer by age thirteen when she survived a 14-foot tiger shark attack in 2003, losing her left arm. Refusing to give up her passion for the ocean, Hamilton returned to her surfboard just 26 days after the incident. Adapting her paddling technique and board designs, she climbed back into elite professional competition, winning major international events and inspiring people across the globe.</p>",
+            habits: "<p>Hamilton built a specialized physical conditioning regimen emphasizing explosive core strength, one-arm paddling endurance, and leg power to compensate for balance shifts on her board. She customizes her surfboards with handle loops on the deck to duck-dive under massive waves. Off the water, she maintains a dedicated routine of functional cross-training, public speaking, and philanthropic work through her foundation.</p>",
+            achievements: "<p>Bethany Hamilton won the NSSA National Championship in 2005 and took first place at the 2014 Surf Dive 'n' Ski Surfons Pro. In 2016, she placed third at the Fiji Women's Pro as a wild card, defeating top-ranked World Surf League competitors. She authored the best-selling autobiography 'Soul Surfer' (adapted into a major feature film in 2011) and received the ESPY Award for Best Comeback Athlete in 2004.</p>"
+        };
+        function switchTab(tabKey, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            document.getElementById('tab-content-area').innerHTML = tabData[tabKey];
+        }
+    </script>
+    <script>
+        function toggleSettings() { 
+            document.getElementById('settings').classList.toggle('show'); 
+        }
+
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            const h1Element = document.querySelector('.header-info h1');
+            const imgElement = document.getElementById('profile-img');
+
+            if (h1Element && imgElement) {
+                
+                const fullName = h1Element.textContent.trim();
+                const nameParts = fullName.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(' ');
+                 const lastNameSlug = nameParts[nameParts.length1]; 
+
+                
+                const imageVariants = [
+                    `hamilton1.jpeg`,
+                    `hamilton2.jpeg`,
+                    `hamilton3.jpeg`,
+                    
+                ];
+
+                docu
+
+                
+                const randomIndex = Math.floor(Math.random() * imageVariants.length);
+                imgElement.src = imageVariants[randomIndex];
+            }
+        });
+
+        function switchTab(tabKey, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            if (typeof tabData !== 'undefined' && tabData[tabKey]) {
+                document.getElementById('tab-content-area').innerHTML = tabData[tabKey];
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eruliaf - Usain Bolt Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    body { 
+        margin: 0; 
+        padding: 20px; 
+        font-family: sans-serif; 
+    }
+
+    
+    .profile-wrapper {
+        width: 100%;
+        max-width: 1100px; 
+        margin: 0 auto;
+    }
+
+    
+    .header-card.form-container, 
+    .tabs-card.form-container,
+    .nav.form-container {
+        width: 100% !important;
+        max-width: 1100px !important;
+        box-sizing: border-box !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+  
+    .header-card {
+        display: flex;
+        gap: 30px;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        align-items: flex-start;
+    }
+
+    
+    .header-img-box {
+        width: 320px;
+        height: 240px;
+        min-width: 320px;  
+        min-height: 240px; 
+        border-radius: 16px !important; 
+        overflow: hidden !important;    
+        flex-shrink: 0;
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-img-box img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain; 
+        display: block;
+        border-radius: 16px;
+    }
+
+    .header-info {
+        flex: 1; 
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: #333;
+    }
+
+    .header-info h1 { 
+        margin: 0; 
+        font-size: 32px; 
+    }
+    
+    .header-info p { 
+        margin: 0; 
+        font-size: 16px; 
+        color: #444; 
+    }
+
+    
+    .tabs-card {
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #ffffff;
+    }
+
+    .tab-buttons {
+        display: flex;
+        border-bottom: 1px solid #ccc;
+        background-color: #f1f3f5;
+    }
+
+    .tab-btn {
+        flex: 1;
+        padding: 16px;
+        background: none;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+        background-color: #ffffff;
+        color: #000;
+        border-bottom: 3px solid #4a4a4a;
+    }
+
+    
+    .tab-content {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        padding: 30px;
+        line-height: 1.8;
+        color: #111111 !important;
+        font-size: 16px;
+        min-height: 160px;
+        background-color: #ffffff;
+    }
+
+    
+    .panel { 
+        display: none; 
+        position: fixed; 
+        right: 0; 
+        top: 0; 
+        width: 240px; 
+        height: 100%; 
+        padding: 25px; 
+        box-shadow: -4px 0 15px rgba(0,0,0,0.15); 
+        z-index: 100; 
+        background: white; 
+    }
+    .panel.show { display: block; }
+
+    
+    .nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px; 
+        padding: 12px 24px; 
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        background-color: #e9ecef;
+        color: #333;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 18px; 
+        transition: all 0.2s ease;
+    }
+
+    .nav-link.active {
+        background-color: #4a4a4a;
+        color: #ffffff;
+        border-color: #4a4a4a;
+    }
+
+    .nav-link:hover:not(.active) {
+        background-color: #dee2e6;
+    }
+</style>
+</head>
+
+<body>
+    
+    <div class="nav form-container" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; box-sizing: border-box;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="Eruliaf logo.png" alt="Eruliaf Logo" style="height: 55px; width: auto; object-fit: contain; filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));">
+            <a href="dashboard.html" class="nav-link" id="nav-home">Home</a>
+            <a href="browse.html" class="nav-link" id="nav-browse">Browse</a>
+            <a href="starred.html" class="nav-link" id="nav-starred">
+                Starred 
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            </a>
+        </div>
+        
+        <div style="display:flex; gap: 10px; align-items:center;">
+            <input type="text" class="input-field" placeholder="Search..." style="padding: 8px 12px; width: 150px;">
+            <button class="form-btn" onclick="toggleSettings()" style="padding: 8px 12px; cursor:pointer; display: flex; align-items: center; justify-content: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+        </div>
+    </div>
+
+    
+    <div class="profile-wrapper">
+        
+        
+        <div class="header-card form-container">
+            <div class="header-img-box form-blob">
+                <img id="profile-img" src="" alt="Usain Bolt">
+            </div>
+            
+            <div class="header-info">
+                <h1>Usain Bolt</h1>
+                <p><strong>Sport:</strong> Running</p>
+                <p><strong>Country:</strong> Jamaica</p>
+                <p><strong>Key Trait:</strong> Massive stride length and explosive power</p>
+                <p style="margin-top: 8px; line-height: 1.6;">
+                    <strong>Description:</strong> Widely considered the greatest sprinter of all time, Usain Bolt holds the world records for the 100-metre at 9.58s and 200-metre at 19.19s dashes and is an eight-time Olympic gold medalist.
+                </p>
+            </div>
+        </div>
+
+        
+        <div class="tabs-card form-container">
+            <div class="tab-buttons">
+                <button type="button" class="tab-btn active" onclick="switchTab('journey', this)">Journey</button>
+                <button type="button" class="tab-btn" onclick="switchTab('habits', this)">Habits</button>
+                <button type="button" class="tab-btn" onclick="switchTab('achievements', this)">Key Achievements</button>
+            </div>
+
+            <div class="tab-content" id="tab-content-area">
+                <p>From a cricket loving Jamaican boy battling scoliosis and frequent hamstring injuries, Usain Bolt overcame his physical limitations to become the greatest sprinter in history. Discovered by local coaches who noticed his raw speed on the school playground, he transitioned to track and field and became the youngest World Junior Champion at age fifteen. Under the guidance of coach Glen Mills, Bolt strengthened his core, refined his technique, and rose to global superstardom at the 2008 Beijing Olympics. He went on to capture eight Olympic gold medals and set unbreakable world records, transforming his natural gift into an historic, legendary legacy.</p>
+            </div>
+        </div>
+        
+<blockquote style="margin: 20px 0 0 0; padding: 25px 30px; background-color: #f8f9fa; border-left: 5px solid #4a4a4a; border-radius: 0 10px 10px 0; font-size: 18px; line-height: 1.6; color: #333; font-style: italic; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+    "You can't put a limit on anything. The more you dream, the farther you get."
+    <footer style="margin-top: 10px; font-style: normal; font-weight: 700; color: #111; font-size: 15px;">— Michael Phelps</footer>
+</blockquote>
+        
+
+    </div>
+
+   <div id="settings" class="panel form-container">
+    <h3 style="margin-top:0;">Settings</h3>
+    <hr style="margin-bottom: 20px; opacity: 0.3;">
+    <label style="display:block; margin-bottom: 15px; cursor: pointer;">
+        <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode(this.checked)"> Dark Mode
+    </label>
+    
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 30px;">
+        <button class="form-btn form-btn--submit" onclick="toggleSettings()" style="width:100%; padding:8px; border-radius:5px; cursor:pointer;">Close</button>
+        <a href="index.html" style="text-decoration: none;"><button class="form-btn" style="width:100%; background-color: #dc3545; color: white; padding: 8px; border:none; border-radius:5px; cursor:pointer; font-weight:600;">Logout</button></a>
+    </div>
+</div>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 30px;">
+            <a href="index.html" style="text-decoration: none;"><button class="form-btn" style="width:100%; background-color: #dc3545; color: white; padding: 8px; border:none; border-radius:5px; cursor:pointer; font-weight:600;">Logout</button></a>
+            <button class="form-btn form-btn--submit" onclick="toggleSettings()" style="width:100%; padding:8px; border-radius:5px; cursor:pointer;">Close</button>
+        </div>
+    </div>
+
+    
+    <script>
+        
+        function toggleSettings() {
+            document.getElementById('settings').classList.toggle('show');
+        }
+
+        
+        const images = ['UsainBolt.jpeg', 'usainboltpotrait.jpeg', 'usainboltrunning.jpeg'];
+        window.addEventListener('DOMContentLoaded', () => {
+            const randomImg = images[Math.floor(Math.random() * images.length)];
+            document.getElementById('profile-img').src = randomImg;
+        });
+
+        
+        const tabData = {
+            journey: "<p>From a cricket loving Jamaican boy battling scoliosis and frequent hamstring injuries, Usain Bolt overcame his physical limitations to become the greatest sprinter in history. Discovered by local coaches who noticed his raw speed on the school playground, he transitioned to track and field and became the youngest World Junior Champion at age fifteen. Under the guidance of coach Glen Mills, Bolt strengthened his core, refined his technique, and rose to global superstardom at the 2008 Beijing Olympics. He went on to capture eight Olympic gold medals and set unbreakable world records, transforming his natural gift into an historic, legendary legacy.</p>",
+            habits: "<p>Built on heavy core training and deep rest, Usain Bolt’s daily routine balanced brutal athletic work with complete mental relaxation to stay at his peak. To protect his scoliosis-prone spine and generate maximum speed, Bolt prioritized three hours of daily track and gym work, focusing on intense abdominal stability and leg power. He fueled his 6-foot-5 frame with slow-burning complex carbs, like Jamaican yams, while making sure to get eight to ten hours of sleep every night for muscle recovery. To escape the extreme pressure of competition, his essential evening habit was playing video games and relaxing with friends to completely reset his mind.</p>",
+            achievements: "<p>Widely decorated as the most dominant runner in track history, Usain Bolt captured eight Olympic gold medals and eleven World Championship titles during his legendary career. He holds the absolute, untouched world records for the 100-metre dash at 9.58 seconds and the 200-metre dash at 19.19 seconds, both set at the 2009 Berlin World Championships. Bolt is the only athlete ever to win the Olympic 100m and 200m titles at three consecutive Olympic Games (2008, 2012, and 2016), solidifying an unmatched legacy as a global sporting icon.</p>"
+        };
+
+        
+        function switchTab(tabKey, btnElement) {
+            const allBtns = document.querySelectorAll('.tab-btn');
+            allBtns.forEach(btn => btn.classList.remove('active'));
+            
+            btnElement.classList.add('active');
+
+            const contentArea = document.getElementById('tab-content-area');
+            if (contentArea && tabData[tabKey]) {
+                contentArea.innerHTML = tabData[tabKey];
+            }
+        }
+
+        
+        const currentPage = window.location.pathname.split("/").pop();
+        if (currentPage === "browse.html") {
+            document.getElementById("nav-browse").classList.add("active");
+        } else if (currentPage === "starred.html") {
+            document.getElementById("nav-starred").classList.add("active");
+        } else {
+            document.getElementById("nav-home").classList.add("active");
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Eruliaf</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="social-auth.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+           <div class="form-blob">
+                <img id="random-blob-img" src="books image.jpeg" alt="oops" class="blob-image" style="width: 90%; height: 80%; object-fit: cover; border-radius: 10px; margin-top: 10px; margin-left: 10px;">
+                <script>
+                    const images = ['books image.jpeg', 'sports image.jpg', 'instruments image.jpeg', 'football image.jpeg', 'swimming image.jpeg' , 'nobel peace price image.jpeg'];
+                    const randomImg = images[Math.floor(Math.random() * images.length)];
+                    document.getElementById('random-blob-img').src = randomImg;
+                </script>
+            </div>
+
+            <div class="form-header">
+                <p>Please enter your details</p>
+                <h1>Create Account</h1>
+            </div>
+
+            <form class="form-box" onsubmit="handleRegister(event)">
+                <div class="input-group" style="margin-bottom: 15px;">
+                    <input type="text" id="Fullname" class="input-field" placeholder="" required>
+                    <label for="Fullname" class="floating-label">Full name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="email" class="input-field" placeholder="" required>
+                    <label for="email" class="floating-label">email address</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="password" class="input-field" placeholder="" required>
+                    <label for="password" class="floating-label">password</label>
+                    <div class="eye-icon" onclick="togglepassword()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye preview-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                </div>
+
+                <button type="submit" class="form-btn form-btn--submit" style="padding: 10px; border-radius: 5%; width: 350px; background-color: #007bff; color: white; margin-top: 10px;">Sign up</button>
+            </form>
+
+            <div class="form-divider">
+                <p>or</p>
+            </div>
+
+            <div class="form-button">
+                <div class="form socials" style="display: flex; justify-content: center; gap: 12px; margin-bottom: 15px;">
+                    <button type="button" class="form-btn form-btn--social" onclick="handleSocialRegister('Google')">
+                        <img src="google logo.png" class="btn-icon" alt="Google" style="width: 24px; height: 24px; object-fit: contain;">
+                    </button>
+
+                    <button type="button" class="form-btn form-btn--social" onclick="handleSocialRegister('Facebook')">
+                        <img src="facebook logo.png" class="btn-icon" alt="Facebook" style="width: 24px; height: 24px; object-fit: contain;">
+                    </button>
+
+                    <button type="button" class="form-btn form-btn--social" onclick="handleSocialRegister('Apple')">
+                        <img src="apple logo.png" class="btn-icon" alt="Apple" style="width: 24px; height: 24px; object-fit: contain;">
+                    </button>
+                </div>
+                <p id="toggle-text">Already have an account? <a href="index.html" class="form-link">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglepassword() {
+            const passwordInput = document.getElementById("password");
+            const eyeIcon = document.querySelector(".eye-icon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-off preview-icon"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>';
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye preview-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>';
+            }
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (email && password) {
+                localStorage.setItem("userEmail", email);
+                localStorage.setItem("userPassword", password);
+                window.location.href = "dashboard.html";
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
